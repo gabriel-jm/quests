@@ -1,0 +1,9 @@
+{
+  "tasks": {
+    "dev": "deno run --allow-net --allow-read --unstable --watch src/main.ts"
+  },
+  "imports": {
+    "std/": "https://deno.land/std@0.201.0/",
+    "postgres": "https://deno.land/x/postgres@v0.17.0/mod.ts"
+  }
+}
