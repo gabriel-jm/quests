@@ -1,4 +1,5 @@
-import { html, htmlBase } from '../html-fn.ts'
+import { loginPage } from '../ui/account/login-page.ts'
+import { htmlBase } from '../ui/tools/html-fn.ts'
 
 export function login() {
   return new Response(htmlBase(loginPage()), {
@@ -6,15 +7,4 @@ export function login() {
       'content-type': 'text/html'
     }
   })
-}
-
-function loginPage() {
-  return html`
-    <h1>Login</h1>
-
-    <form method="post">
-      <input placeholder="email" type="text" name="email">
-      <button>Login</button>
-    </form>
-  `
 }
