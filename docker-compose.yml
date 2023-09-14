@@ -1,0 +1,33 @@
+services:
+  app:
+    image: denoland/deno
+    working_dir: /app
+    ports:
+      - 8000:8000
+    depends_on:
+      - pg
+    volumes:
+      - $HOME/.deno:/deno-dir
+      - .:/app
+    command: deno task dev
+
+  pg:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - ./db-data:/var/lib/postgresql/data
+      - ./database/scripts:/docker-entrypoint-initdb.d
+    ports:
+      - 5432:5432
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    environment:
+      PGADMIN_DEFAULT_EMAIL: postgres@email.com
+      PGADMIN_DEFAULT_PASSWORD: postgres
+    ports:
+      - 4500:80
+    depends_on:
+      - pg

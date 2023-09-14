@@ -1,7 +1,14 @@
-import './html-fn.ts'
-import { defineRoutes } from './routes.ts';
+import 'std/dotenv/load.ts'
+import './ui/tools/html-fn.ts'
+import { defineRoutes } from './server/routes.ts';
 import { router, serverHandler } from './server/handler.ts'
+import { initDatabase } from './database/client.ts';
 
-defineRoutes(router)
-
-Deno.serve(serverHandler)
+try {
+  await initDatabase()
+  
+  defineRoutes(router)
+  Deno.serve(serverHandler)
+} catch(error) {
+  console.error(error)
+}

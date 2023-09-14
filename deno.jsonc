@@ -1,9 +1,10 @@
 {
   "tasks": {
-    "dev": "deno run --allow-net --allow-read --unstable --watch src/main.ts"
+    "dev": "deno run --allow-env --allow-net --allow-read --unstable --watch src/main.ts"
   },
   "imports": {
     "std/": "https://deno.land/std@0.201.0/",
-    "postgres": "https://deno.land/x/postgres@v0.17.0/mod.ts"
+    "postgres": "https://deno.land/x/postgres@v0.17.0/mod.ts",
+    "bcrypt": "npm:bcrypt@5.1.1"
   }
 }

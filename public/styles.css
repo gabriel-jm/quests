@@ -8,11 +8,6 @@ body {
   color: #eee;
 }
 
-.todo-list {
-  & li {
-    & .delete {
-      text-decoration: underline;
-      cursor: pointer;
-    }
-  }
+input {
+  display: block;
 }
