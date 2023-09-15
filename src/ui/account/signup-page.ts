@@ -5,7 +5,9 @@ export function signupPage() {
   return html`
     <h1>Create Account</h1>
 
-    <form method="post">
+    <div id="error-message"></div>
+
+    <form hx-post="/signup">
       ${[
         inputField({
           label: 'Name',

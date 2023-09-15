@@ -1,3 +1,4 @@
+import { inputField } from '../common/input-field.ts';
 import { html } from '../tools/html-fn.ts'
 
 export function loginPage() {
@@ -5,8 +6,17 @@ export function loginPage() {
     <h1>Login</h1>
 
     <form method="post">
-      <input type="text" name="email" placeholder="E-Mail" />
-      <input type="text" name="password" placeholder="Password" />
+      ${[
+        inputField({
+          label: 'E-Mail',
+          name: 'email'
+        }),
+
+        inputField({
+          label: 'Password',
+          name: 'password'
+        })
+      ]}
       <button>Login</button>
     </form>
 
