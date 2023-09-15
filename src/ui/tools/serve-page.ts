@@ -1,4 +1,4 @@
-import { HTMLTemplateString, htmlBase } from './html-fn.ts'
+import { HTMLTemplateString, htmlBase } from '@/ui/tools/html-fn.ts'
 
 export type PageFunction = (...args: unknown[]) => HTMLTemplateString | string
 

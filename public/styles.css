@@ -12,6 +12,29 @@ a {
   color: #eee;
 }
 
-input {
+.form-control {
   display: block;
+  margin: 12px 0;
+
+  > span {
+    display: inline-block;
+    padding-bottom: 6px;
+  }
+
+  > input {
+    display: block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: transparent;
+    padding: 8px 14px;
+    color: inherit;
+
+    &.error {
+      border: 1px solid #d45;
+    }
+  }
+  
+  > sub.error {
+    color: #d45;
+  }
 }

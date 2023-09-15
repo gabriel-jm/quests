@@ -1,21 +1,31 @@
-import { attrs } from '../tools/attributes.ts'
-import { html } from '../tools/html-fn.ts'
+import { attrs } from "@/ui/tools/attributes.ts"
+import { html } from "@/ui/tools/html-fn.ts"
 
 type InputFieldProps = {
   label?: string
   name: string
   type?: string
+  value?: string
+  error?: string
 }
 
 export function inputField({
   label,
   name,
-  type = 'text'
+  value,
+  type = 'text',
+  error
 }: InputFieldProps) {
   return html`
-    <label>
+    <label class="form-control">
       ${label && html`<span>${label}</span>`}
-      <input ${attrs({ name, type })} />
+
+      <input
+        class="${error && html`error`}"
+        ${attrs({ name, type, value })}
+      />
+      
+      ${error && html`<sub class="error">${error}</sub>`}
     </label>
   `
 }

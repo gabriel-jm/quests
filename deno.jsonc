@@ -3,8 +3,9 @@
     "dev": "deno run --allow-env --allow-net --allow-read --unstable --watch src/main.ts"
   },
   "imports": {
+    "@/": "./src/",
     "std/": "https://deno.land/std@0.201.0/",
     "postgres": "https://deno.land/x/postgres@v0.17.0/mod.ts",
-    "bcrypt": "npm:bcrypt@5.1.1"
+    "bcrypt": "https://deno.land/x/bcrypt@v0.4.1/mod.ts"
   }
 }
