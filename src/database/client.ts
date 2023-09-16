@@ -1,10 +1,15 @@
 import { Pool } from 'postgres'
+import postgres from 'postgresjs'
+import { migrate } from 'postgres_migrations'
+import { resolve } from 'std/path/mod.ts'
 
 const connectionString = Deno.env.get('DATABASE_URL')
-export const client = new Pool(Deno.env.get('DATABASE_URL'), 20)
+export const client = new Pool(connectionString, 20)
 
-export async function initDatabase() {
-  
+export async function runMigrations() {
+  await migrate(postgres(String(connectionString)), {
+    path: resolve('src', 'database', 'migrations')
+  })
 }
 
 export async function sql(templateStrings: TemplateStringsArray, ...values: unknown[]) {
