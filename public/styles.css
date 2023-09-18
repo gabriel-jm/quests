@@ -1,3 +1,5 @@
+/* Colors: https://colorswall.com/es/palette/239821 */
+
 * {
   box-sizing: border-box;
 }
@@ -10,6 +12,23 @@ body {
 
 a {
   color: #eee;
+}
+
+button {
+  background-color: #0b8758;
+  color: #fff;
+  font-size: 0.95rem;
+  padding: 8px 12px;
+  border: 0;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0 2px 1px 1px #024d31;
+  transition: all 100ms;
+
+  &:active {
+    background-color: #024d31;
+    box-shadow: none;
+  }
 }
 
 .form-control {
