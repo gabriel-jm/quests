@@ -6,16 +6,20 @@ export function loginPage() {
     <div class="login">
       <h1>Login</h1>
 
+      <div id="error-message"></div>
+
       <form method="post">
         ${[
           inputField({
             label: 'E-Mail',
-            name: 'email'
+            name: 'email',
+            optional: true
           }),
 
           inputField({
             label: 'Password',
-            name: 'password'
+            name: 'password',
+            optional: true
           })
         ]}
         <button>Login</button>

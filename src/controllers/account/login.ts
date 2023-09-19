@@ -15,6 +15,9 @@ export async function login(req: Request) {
   const validationResult = loginSchema.safeParse(loginData)
 
   if (!validationResult.success) {
+    console.log(validationResult.error)
+    const { issues } = validationResult.error
+
     return Content.html(html`
       Error
     `)

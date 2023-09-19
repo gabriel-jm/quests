@@ -4,6 +4,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  list-style: none;
 }
 
 html, body {
@@ -39,7 +40,6 @@ button {
 
 .form-control {
   display: block;
-  /* margin: 12px 0; */
 
   > span {
     display: inline-block;
@@ -61,5 +61,25 @@ button {
   
   > sub.error {
     color: #d45;
+  }
+}
+
+.error-container {
+  border: 1px solid #f56;
+  background-color: #f563;
+  color: #f56;
+  padding: 12px 18px;
+  border-radius: 4px;
+
+  .error-field {
+    font-weight: bold;
+  }
+
+  .error-field-list {
+    padding-left: 30px;
+    
+    > li {
+      list-style: disc;
+    }
   }
 }
