@@ -12,11 +12,16 @@ export async function runMigrations() {
   })
 }
 
-export async function sql(templateStrings: TemplateStringsArray, ...values: unknown[]) {
+export async function sql<T = unknown>(
+  templateStrings: TemplateStringsArray,
+  ...values: unknown[]
+) {
   const poolClient = await client.connect()
 
   try {
-    return await poolClient.queryObject(templateStrings, ...values)
+    const result = await poolClient.queryObject<T>(templateStrings, ...values)
+
+    return result.rows
   } finally {
     poolClient.release()
   }

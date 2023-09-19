@@ -13,4 +13,8 @@ export class Content {
   static json(data: unknown, info?: ContentInfo) {
     return new Response(JSON.stringify(data), info)
   }
+
+  static noContent(info?: ContentInfo) {
+    return new Response(null, info)
+  }
 }
