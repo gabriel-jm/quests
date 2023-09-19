@@ -6,7 +6,7 @@ type InputFieldProps = {
   name: string
   type?: string
   value?: string
-  error?: string
+  optional?: boolean
 }
 
 export function inputField({
@@ -14,18 +14,16 @@ export function inputField({
   name,
   value,
   type = 'text',
-  error
+  optional
 }: InputFieldProps) {
   return html`
     <label class="form-control">
       ${label && html`<span>${label}</span>`}
 
       <input
-        class="${error && html`error`}"
         ${attrs({ name, type, value })}
-      />
-      
-      ${error && html`<sub class="error">${error}</sub>`}
+        ${optional ? null : 'required'}
+      />      
     </label>
   `
 }

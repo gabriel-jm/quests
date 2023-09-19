@@ -2,10 +2,16 @@
 
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
 }
 
 body {
-  font-family: sans-serif;
+  font-family: 'Mukta', sans-serif;
   background-color: #222;
   color: #eee;
 }
@@ -18,7 +24,7 @@ button {
   background-color: #0b8758;
   color: #fff;
   font-size: 0.95rem;
-  padding: 8px 12px;
+  padding: 10px 12px;
   border: 0;
   border-radius: 4px;
   cursor: pointer;
@@ -33,7 +39,7 @@ button {
 
 .form-control {
   display: block;
-  margin: 12px 0;
+  /* margin: 12px 0; */
 
   > span {
     display: inline-block;

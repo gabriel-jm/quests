@@ -6,11 +6,11 @@ export type PageFunction = (req: Request) => (
   | string
 )
 
-export function servePage(pageFn: PageFunction) {
+export function servePage(pageFn: PageFunction, cssFile?: string) {
   return async (req: Request) => {
     const content = await pageFn(req)
 
-    return new Response(htmlBase(content), {
+    return new Response(htmlBase(content, cssFile), {
       headers: {
         'content-type': 'text/html'
       }
