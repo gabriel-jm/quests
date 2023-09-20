@@ -3,7 +3,7 @@ import { Router } from '../server/handler.ts'
 import { loginPage } from '../ui/account/login-page.ts'
 import { signupPage } from '../ui/account/signup-page.ts';
 import { servePage } from '../ui/tools/serve-page.ts'
-import { home } from "@/controllers/home/index.ts";
+import { homePage } from "@/ui/home/index.ts";
 
 export function defineRoutes(router: Router) {
   router
@@ -11,5 +11,5 @@ export function defineRoutes(router: Router) {
     .set('post::/', login)
     .set('get::/signup', servePage(signupPage))
     .set('post::/signup', signup)
-    .set('get::/home', servePage(home))
+    .set('get::/home', servePage(homePage))
 }

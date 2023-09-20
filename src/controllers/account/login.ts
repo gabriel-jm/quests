@@ -1,9 +1,9 @@
 import { formData, text } from 'zod-form-data';
-import { html } from '../../ui/tools/html-fn.ts'
-import { Content, cookies } from "@/controllers/tools/index.ts";
+import { Content, cookies, makeErrorMessage } from "@/controllers/tools/index.ts";
 import { string } from "zod";
 import { sql } from "@/database/client.ts";
 import { TokenService } from "@/services/crypto/index.ts";
+import { AccountModel } from "@/types/index.ts";
 
 const loginSchema = formData({
   email: text(string().email()),
@@ -15,19 +15,12 @@ export async function login(req: Request) {
   const validationResult = loginSchema.safeParse(loginData)
 
   if (!validationResult.success) {
-    console.log(validationResult.error)
-    const { issues } = validationResult.error
-
-    return Content.html(html`
-      Error
-    `)
+    return makeErrorMessage(validationResult)
   }
 
   const { email } = validationResult.data
 
-  type tmp = { id: string }
-
-  const [account] = await sql<tmp>/*sql*/`
+  const [account] = await sql<AccountModel>/*sql*/`
     select * from accounts
     where email = ${email};
   `

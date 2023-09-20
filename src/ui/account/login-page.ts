@@ -8,7 +8,7 @@ export function loginPage() {
 
       <div id="error-message"></div>
 
-      <form method="post">
+      <form hx-post="/">
         ${[
           inputField({
             label: 'E-Mail',

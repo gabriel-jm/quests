@@ -1,5 +1,4 @@
-import { signupForm } from '@/ui/account/signup-page.ts'
-import { Content } from '@/controllers/tools/index.ts'
+import { Content, makeErrorMessage } from '@/controllers/tools/index.ts'
 import { genSalt, hash } from 'bcrypt'
 import { sql } from '@/database/client.ts'
 import { formData, text } from 'zod-form-data'
@@ -26,19 +25,7 @@ export async function signup(req: Request) {
   const validationResult = signupSchema.safeParse(formData)
 
   if (!validationResult.success) {
-    const form = signupForm(
-      Object.fromEntries(
-        Object
-          .entries(validationResult.error.format())
-          .map(([errorName, details]) => {
-            console.log(details)
-            const errorMessage = Array.isArray(details) && details[0]
-            return [errorName, { error: errorMessage }]
-          })
-      )
-    )
-
-    return Content.html(form)
+    return makeErrorMessage(validationResult)
   }
 
   const { password, username, email } = validationResult.data
