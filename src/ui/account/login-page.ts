@@ -1,7 +1,18 @@
+import { Content, parseCookies } from "@/controllers/tools/index.ts";
 import { inputField } from '../common/input-field.ts';
 import { html } from '../tools/html-fn.ts'
 
-export function loginPage() {
+export function loginPage(req: Request) {
+  const cookies = parseCookies<{ token: string }>(req)
+
+  if (cookies.token && cookies.token !== 'deleted') {
+    return Content.noContent({
+      headers: {
+        'hx-redirect': '/home'
+      }
+    })
+  }
+
   return html`
     <div class="login">
       <h1>Login</h1>
@@ -13,13 +24,13 @@ export function loginPage() {
           inputField({
             label: 'E-Mail',
             name: 'email',
-            optional: true
+            type: 'email'
           }),
 
           inputField({
             label: 'Password',
             name: 'password',
-            optional: true
+            type: 'password'
           })
         ]}
         <button>Login</button>

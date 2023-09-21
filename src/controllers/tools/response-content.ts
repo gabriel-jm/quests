@@ -15,6 +15,9 @@ export class Content {
   }
 
   static noContent(info?: ContentInfo) {
-    return new Response(null, info)
+    return new Response(null, {
+      ...info,
+      status: 204
+    })
   }
 }
