@@ -83,3 +83,39 @@ button {
     }
   }
 }
+
+.main-menu {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 6px 24px;
+  background: linear-gradient(to bottom right, #1f1f1f, #0a0a0a);
+  border-top: 1px solid #333;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  > h1 {
+    font-size: 1.5rem;
+  }
+}
+
+.account-display {
+  width: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  > p {
+    text-transform: capitalize;
+    font-size: 1.2rem;
+  }
+
+  .logout-icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    cursor: pointer;
+  }
+}

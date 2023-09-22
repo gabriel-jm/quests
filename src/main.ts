@@ -8,7 +8,16 @@ try {
   await runMigrations()
 
   defineRoutes(router)
-  Deno.serve(serverHandler)
+  Deno.serve(async req => {
+    try {
+      return await serverHandler(req)
+    } catch(error) {
+      return new Response(error.message, {
+        status: error.statusCode,
+        headers: error.headers
+      })
+    }
+  })
 } catch(error) {
-  console.error(error)
+  console.error('aqui', error)
 }

@@ -12,5 +12,5 @@ export function defineRoutes(router: Router) {
     .set('get::/signup', servePage(signupPage))
     .set('post::/signup', signup)
     .set('post::/logout', logout)
-    .set('get::/home', servePage(homePage))
+    .set('get::/home', servePage(homePage, 'home.css'))
 }

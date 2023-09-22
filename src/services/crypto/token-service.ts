@@ -12,6 +12,21 @@ export class TokenService {
   }
 
   static async verify(token: string) {
-    return await verify(token, key)
+    try {
+      return await verify(token, key)
+    } catch {
+      throw new InvalidToken()
+    }
+  }
+}
+
+export class InvalidToken extends Error {
+  statusCode = 301
+  headers = {
+    location: '/'
+  }
+
+  constructor() {
+    super('Invalid Token')
   }
 }
