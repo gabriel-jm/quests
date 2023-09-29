@@ -1,4 +1,4 @@
-import { Content, makeErrorMessage } from '@/controllers/tools/index.ts'
+import { Content, makeValidationErrorMessage } from '@/controllers/tools/index.ts'
 import { genSalt, hash } from 'bcrypt'
 import { sql } from '@/database/client.ts'
 import { formData, text } from 'zod-form-data'
@@ -25,7 +25,7 @@ export async function signup(req: Request) {
   const validationResult = signupSchema.safeParse(formData)
 
   if (!validationResult.success) {
-    return makeErrorMessage(validationResult)
+    return makeValidationErrorMessage(validationResult)
   }
 
   const { password, username, email } = validationResult.data

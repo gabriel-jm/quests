@@ -1,6 +1,6 @@
 import { html } from '@/ui/tools/html-fn.ts'
 
-export function errorMessage(record: Record<string, string[]>) {
+export function validationErrorMessage(record: Record<string, string[]>) {
   return html`
     <ul class="error-container">
       ${
@@ -22,5 +22,13 @@ export function errorMessage(record: Record<string, string[]>) {
           })
       }
     </ul>
+  `
+}
+
+export function errorMessage(message: string) {
+  return html`
+    <div class="error-message">
+      ${message}
+    </div>
   `
 }

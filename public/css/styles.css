@@ -7,6 +7,10 @@
   list-style: none;
 }
 
+:root {
+  --green: #0b8758;
+}
+
 html, body {
   height: 100%;
 }
@@ -22,7 +26,7 @@ a {
 }
 
 button {
-  background-color: #0b8758;
+  background-color: var(--green);
   color: #fff;
   font-size: 0.95rem;
   padding: 10px 12px;
@@ -82,6 +86,14 @@ button {
       list-style: disc;
     }
   }
+}
+
+.error-message {
+  border: 1px solid #f56;
+  background-color: #f563;
+  color: #f56;
+  padding: 12px 18px;
+  border-radius: 4px;
 }
 
 .main-menu {

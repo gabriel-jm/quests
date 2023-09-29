@@ -32,8 +32,10 @@ export async function homePage(req: Request) {
 
     <h2>Hi, ${account.username}!</h2>
 
-    <div class="page-card">
-      Characters
-    </div>
+    <section class="home-menu">
+      <a class="page-card" href="/characters">
+        Characters
+      </a>
+    </section>
   `
 }

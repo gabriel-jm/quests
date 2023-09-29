@@ -1,4 +1,21 @@
+.home-menu {
+  margin: 18px;
+}
+
 .page-card {
-  padding: 30px;
-  border: 1px solid #333;
+  display: block;
+  padding: 18px;
+  border: 1px solid #777;
+  border-radius: 4px;
+  background-color: #151515;
+  box-shadow: 0 0 0 6px #151515;
+  cursor: pointer;
+  font-size: 1.2rem;
+  text-decoration: none;
+  transition: all 120ms;
+
+  &:hover {
+    color: var(--green);
+    border-color: var(--green);
+  }
 }

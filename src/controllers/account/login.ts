@@ -1,9 +1,11 @@
 import { formData, text } from 'zod-form-data';
-import { Content, cookies, makeErrorMessage } from "@/controllers/tools/index.ts";
+import { compare } from 'bcrypt';
 import { string } from "zod";
+import { Content, cookies, makeValidationErrorMessage } from "@/controllers/tools/index.ts";
 import { sql } from "@/database/client.ts";
 import { TokenService } from "@/services/crypto/index.ts";
 import { AccountModel } from "@/types/index.ts";
+import { makeErrorMessage } from '@/controllers/tools/make-error-message.ts';
 
 const loginSchema = formData({
   email: text(string().email()),
@@ -15,15 +17,22 @@ export async function login(req: Request) {
   const validationResult = loginSchema.safeParse(loginData)
 
   if (!validationResult.success) {
-    return makeErrorMessage(validationResult)
+    return makeValidationErrorMessage(validationResult)
   }
 
-  const { email } = validationResult.data
+  const { email, password } = validationResult.data
 
-  const [account] = await sql<AccountModel>/*sql*/`
+  const [account] = await sql<AccountModel | null>/*sql*/`
     select * from accounts
     where email = ${email};
   `
+
+  const equalPassword = await compare(password, account?.password ?? '')
+
+  if (!account || !equalPassword) {
+    return makeErrorMessage('E-Mail or Password incorrect!')
+  }
+
   const token = await TokenService.create({ id: account.id })
 
   return Content.noContent({
