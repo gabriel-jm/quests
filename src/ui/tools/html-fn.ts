@@ -22,11 +22,19 @@ function resolveValue(value: unknown): string {
     return value as string
   }
 
-  return sanitizeHTML(String(value))
+  return sanitizeHTML(value)
 }
 
-function sanitizeHTML(rawHTML: string) {
-  return rawHTML
+function sanitizeHTML(rawHTML: unknown) {
+  if (
+    rawHTML === undefined
+    || rawHTML === null
+    || rawHTML === false
+  ) {
+    return ''
+  }
+
+  return String(rawHTML)
     .replace(/>/g, '&gt;')
     .replace(/</g, '&lt;')
     .replace(/javascript:\/\//, 'javascript:&sol;&sol;')

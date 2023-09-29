@@ -6,5 +6,7 @@ create table if not exists characters (
   vitality int not null,
   strength int not null,
   dexterity int not null,
-  intelligence int not null
+  intelligence int not null,
+
+  "accountId" varchar(255) references accounts(id)
 );

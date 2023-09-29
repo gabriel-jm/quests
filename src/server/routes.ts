@@ -4,6 +4,7 @@ import { loginPage } from '../ui/account/login-page.ts'
 import { signupPage } from '../ui/account/signup-page.ts';
 import { servePage } from '../ui/tools/serve-page.ts'
 import { homePage } from "@/ui/home/index.ts";
+import { charactersPage } from "@/ui/characters/index.ts";
 
 export function defineRoutes(router: Router) {
   router
@@ -11,6 +12,8 @@ export function defineRoutes(router: Router) {
     .set('post::/', login)
     .set('get::/signup', servePage(signupPage))
     .set('post::/signup', signup)
+    .set('get::/logout', logout)
     .set('post::/logout', logout)
     .set('get::/home', servePage(homePage, 'home.css'))
+    .set('get::/characters', servePage(charactersPage))
 }

@@ -3,7 +3,7 @@ import { parseCookies } from '@/controllers/tools/index.ts'
 import { sql } from "@/database/client.ts";
 import { TokenService } from '@/services/crypto/token-service.ts';
 import { AccountModel } from '@/types/index.ts';
-import { logoutIcon } from '@/ui/common/icons/logout-icon.ts';
+import { mainMenu } from '@/ui/common/main-menu.ts';
 
 export async function homePage(req: Request) {
   const cookies = parseCookies<{ token: string }>(req)
@@ -15,20 +15,7 @@ export async function homePage(req: Request) {
   `
 
   return html`
-    <div class="main-menu">
-      <h1>Quests</h1>
-      <div class="account-display">
-        <p>${account.username}</p>
-
-        <div
-          class="logout-icon"
-          title="Log Out"
-          hx-post="/logout"
-        >
-          ${logoutIcon()}
-        </div>
-      </div>
-    </div>
+    ${mainMenu(tokenData.userName)}    
 
     <h2>Hi, ${account.username}!</h2>
 

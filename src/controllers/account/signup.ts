@@ -39,7 +39,10 @@ export async function signup(req: Request) {
     values (${id}, ${username}, ${email}, ${encryptedPassword});
   `
 
-  const token = await TokenService.create({ id })
+  const token = await TokenService.create({
+    id,
+    userName: username
+  })
 
   return Content.noContent({
     headers: {

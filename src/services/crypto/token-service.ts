@@ -6,6 +6,11 @@ const key = await crypto.subtle.generateKey(
   ['sign', 'verify']
 )
 
+export type TokenData = {
+  id: string
+  userName: string
+}
+
 export class TokenService {
   static async create(data: Payload) {
     return await create({ alg: 'HS512' }, data, key)
@@ -13,7 +18,7 @@ export class TokenService {
 
   static async verify(token: string) {
     try {
-      return await verify(token, key)
+      return await verify(token, key) as TokenData
     } catch {
       throw new InvalidToken()
     }
@@ -23,7 +28,7 @@ export class TokenService {
 export class InvalidToken extends Error {
   statusCode = 301
   headers = {
-    location: '/'
+    location: '/logout'
   }
 
   constructor() {

@@ -33,7 +33,10 @@ export async function login(req: Request) {
     return makeErrorMessage('E-Mail or Password incorrect!')
   }
 
-  const token = await TokenService.create({ id: account.id })
+  const token = await TokenService.create({
+    id: account.id,
+    userName: account.username
+  })
 
   return Content.noContent({
     headers: {
