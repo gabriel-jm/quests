@@ -139,3 +139,27 @@ button {
     cursor: pointer;
   }
 }
+
+/* Icons */
+.plus-icon {
+  --height: 12px;
+
+  display: inline-block;
+  height: var(--height);
+  width: 2px;
+  background-color: currentColor;
+  position: relative;
+  margin: 0 calc(var(--height) / 2);
+
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: inherit;
+    width: inherit;
+    height: inherit;
+    rotate: 90deg;
+  }
+}
