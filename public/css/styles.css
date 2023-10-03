@@ -113,6 +113,14 @@ button {
   }
 }
 
+.home-link {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
 .account-display {
   width: 100px;
   display: flex;

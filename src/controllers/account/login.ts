@@ -40,7 +40,7 @@ export async function login(req: Request) {
 
   return Content.noContent({
     headers: {
-      'set-cookie': cookies({ token }),
+      'set-cookie': cookies({ 'quests-token': token }),
       'hx-redirect': '/home'
     }
   })

@@ -17,9 +17,15 @@ export function cookies(record: Record<string, unknown>) {
 export function parseCookies<T = Record<string, string>>(req: Request) {
   const rawHeader = req.headers.get('cookie') ?? ''
 
-  return Object.fromEntries(
+  const cookies = Object.fromEntries(
     rawHeader
       .split(';')
-      .map(item => item.trim().split('='))
+      .map(item => item
+        .trim()
+        .split('=')
+        .map(key => key?.replace(/^quests-/, ''))
+      )
   ) as T
+
+  return cookies
 }

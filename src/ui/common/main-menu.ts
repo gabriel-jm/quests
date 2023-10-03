@@ -5,7 +5,7 @@ export function mainMenu(userName: string) {
   return html`
     <div class="main-menu">
       <h1>
-        <a href="/home">Quests</a>
+        <a class="home-link" href="/home">Quests</a>
       </h1>
       
       <div class="account-display">

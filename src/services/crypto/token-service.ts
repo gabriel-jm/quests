@@ -57,8 +57,9 @@ export class TokenService {
 }
 
 export class InvalidToken extends Error {
-  statusCode = 200
+  statusCode = 301
   headers = {
+    location: '/logout',
     'hx-redirect': '/logout'
   }
 

@@ -3,7 +3,7 @@ export function logout() {
     status: 301,
     headers: {
       location: '/',
-      'set-cookie': 'token=deleted; Max-Age=0'
+      'set-cookie': 'quests-token=deleted; Max-Age=0'
     }
   })
 }
