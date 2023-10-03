@@ -1,20 +1,41 @@
 import { Payload, create, verify } from 'djwt'
+import { resolve } from 'std/path/mod.ts'
 
-const key = await crypto.subtle.generateKey(
-  { name: 'HMAC', hash: 'SHA-512' },
-  true,
-  ['sign', 'verify']
-)
+const key = await getKey()
 
-// crypto.subtle.exportKey('raw', key)
+async function getKey() {
+  const keyPath = resolve('key', 'private.key')
 
-// crypto.subtle.importKey(
-//   'raw',
-//   (await Deno.readFile('/key')).buffer,
-//   { name: 'HMAC', hash: 'SHA-512' },
-//   true,
-//   ['sign', 'verify']
-// )
+  try {
+    const file = await Deno.readTextFile(keyPath)
+
+    return await crypto.subtle.importKey(
+      'jwk',
+      JSON.parse(file) as JsonWebKey,
+      { name: 'HMAC', hash: 'SHA-512' },
+      true,
+      ['sign', 'verify']
+    )
+  } catch {
+    try {
+      await Deno.mkdir(resolve('key'))
+    } catch {
+      null
+    }
+
+    const key = await crypto.subtle.generateKey(
+      { name: 'HMAC', hash: 'SHA-512' },
+      true,
+      ['sign', 'verify']
+    )
+
+    const exported = await crypto.subtle.exportKey('jwk', key)
+
+    await Deno.writeTextFile(keyPath, JSON.stringify(exported))
+
+    return key
+  }
+}
 
 export type TokenData = {
   id: string
