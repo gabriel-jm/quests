@@ -1,0 +1,27 @@
+.signup {
+  height: 100%;
+  max-width: 400px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+
+  > h1 {
+    font-style: italic;
+    font-size: 2.5rem;
+  }
+}
+
+.signup-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+
+  > button {
+    margin-top: 16px;
+    width: 100%;
+    grid-column: 1 / 3;
+  }
+}

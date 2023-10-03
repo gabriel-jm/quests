@@ -14,7 +14,7 @@ export function loginPage(req: Request) {
   }
 
   return html`
-    <div class="login">
+    <section class="login">
       <h1>Login</h1>
 
       <div id="error-message"></div>
@@ -37,6 +37,6 @@ export function loginPage(req: Request) {
       </form>
 
       <a href="/signup">Create Account</a>
-    </div>
+    </section>
   `
 }

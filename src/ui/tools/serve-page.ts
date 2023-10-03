@@ -17,7 +17,8 @@ export function servePage(pageFn: PageFunction, cssFile?: string) {
 
     return new Response(htmlBase(content, cssFile), {
       headers: {
-        'content-type': 'text/html'
+        'content-type': 'text/html',
+        'cache-control': 'no-cache'
       }
     })
   }

@@ -10,7 +10,7 @@ export function defineRoutes(router: Router) {
   router
     .set('get::/', servePage(loginPage, 'login.css'))
     .set('post::/', login)
-    .set('get::/signup', servePage(signupPage))
+    .set('get::/signup', servePage(signupPage, 'signup.css'))
     .set('post::/signup', signup)
     .set('get::/logout', logout)
     .set('post::/logout', logout)
