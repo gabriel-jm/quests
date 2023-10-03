@@ -4,7 +4,10 @@ import { logoutIcon } from "@/ui/common/icons/index.ts";
 export function mainMenu(userName: string) {
   return html`
     <div class="main-menu">
-      <h1>Quests</h1>
+      <h1>
+        <a href="/home">Quests</a>
+      </h1>
+      
       <div class="account-display">
         <p>${userName}</p>
 

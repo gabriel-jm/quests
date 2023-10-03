@@ -15,5 +15,5 @@ export function defineRoutes(router: Router) {
     .set('get::/logout', logout)
     .set('post::/logout', logout)
     .set('get::/home', servePage(homePage, 'home.css'))
-    .set('get::/characters', servePage(charactersPage))
+    .set('get::/characters', servePage(charactersPage, 'characters.css'))
 }

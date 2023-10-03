@@ -7,7 +7,13 @@ type ContentInfo = {
 
 export class Content {
   static html(data: string | HTMLTemplateString, info?: ContentInfo) {
-    return new Response(String(data), info)
+    return new Response(String(data), {
+      status: info?.status,
+      headers: {
+        ...info?.headers,
+        'content-type': 'text/html'
+      }
+    })
   }
 
   static json(data: unknown, info?: ContentInfo) {

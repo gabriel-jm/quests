@@ -17,7 +17,7 @@ export async function charactersPage(req: Request) {
   return html`
     ${mainMenu(tokenData.userName)}
     
-    <h2>Characters</h2>
+    <h2 class="page-title">Characters</h2>
 
     ${Boolean(characters.length) && html`
       <ul>

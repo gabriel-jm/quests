@@ -6,6 +6,16 @@ const key = await crypto.subtle.generateKey(
   ['sign', 'verify']
 )
 
+// crypto.subtle.exportKey('raw', key)
+
+// crypto.subtle.importKey(
+//   'raw',
+//   (await Deno.readFile('/key')).buffer,
+//   { name: 'HMAC', hash: 'SHA-512' },
+//   true,
+//   ['sign', 'verify']
+// )
+
 export type TokenData = {
   id: string
   userName: string
@@ -26,9 +36,9 @@ export class TokenService {
 }
 
 export class InvalidToken extends Error {
-  statusCode = 301
+  statusCode = 200
   headers = {
-    location: '/logout'
+    'hx-redirect': '/logout'
   }
 
   constructor() {

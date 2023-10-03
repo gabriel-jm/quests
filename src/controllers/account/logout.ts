@@ -1,11 +1,8 @@
-import { Content } from "@/controllers/tools/index.ts";
-
 export function logout() {
-  return Content.noContent({
+  return new Response(null, {
+    status: 301,
     headers: {
       location: '/',
-      'hx-redirect': '/',
-      'hx-refresh': 'true',
       'set-cookie': 'token=deleted; Max-Age=0'
     }
   })

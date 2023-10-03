@@ -42,10 +42,14 @@ function sanitizeHTML(rawHTML: unknown) {
 
 const indexHTML = await Deno.readTextFile(resolve('public', 'index.html'))
 
-export function htmlBase(content: string | HTMLTemplateString, cssFile?: string) {
+export function htmlBase(content?: string | HTMLTemplateString, cssFile?: string) {
   const stylesLinkTag = cssFile
     ? `<link rel="stylesheet" href="/css/${cssFile}" />`
     : ''
+
+  if (!content) {
+    return indexHTML
+  }
   
   return indexHTML
     .replace('<!-- app -->', content as string)
