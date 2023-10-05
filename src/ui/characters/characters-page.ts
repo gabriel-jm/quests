@@ -21,7 +21,6 @@ export async function charactersPage(req: Request) {
     <header class="character-header">
       <h2 class="page-title">Characters</h2>
     </header>
-    
 
     <ul class="characters-list">
       ${characters.map(char => html`
@@ -29,7 +28,9 @@ export async function charactersPage(req: Request) {
       `)}
       <li>
         <div class="character-card">
-          <figure></figure>
+          <div class="char-sprite-bg">
+            <div class="char-sprite"></div>
+          </div>
           <div>
             <h4>
               <span>Warrior</span>

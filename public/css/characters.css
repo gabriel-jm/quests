@@ -34,9 +34,18 @@
   display: flex;
   gap: 12px;
 
-  & figure {
+  & .char-sprite-bg {
+    background-color: #ddd;
+  }
+
+  & .char-sprite {
     width: 80px;
-    background-color: #333;
+    height: 90px;
+    overflow: hidden;
+    image-rendering: pixelated;
+    background: url(https://lzlbwfwnvukgyfaekuzt.supabase.co/storage/v1/object/sign/quests/ff-sprites.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJxdWVzdHMvZmYtc3ByaXRlcy5wbmciLCJpYXQiOjE2OTY1MzgxMDEsImV4cCI6MTcyODA3NDEwMX0.It7Gw3ER94KWpoFVz0a6kkxq-ZFFG2-IvwjnI8cuEV0&t=2023-10-05T20%3A35%3A01.535Z);
+    background-position: 0px -20px;
+    background-size: 1000px;
   }
 }
 
