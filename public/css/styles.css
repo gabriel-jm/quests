@@ -102,8 +102,8 @@ button {
   left: 0;
   width: 100%;
   padding: 6px 24px;
-  background: linear-gradient(to bottom right, #1f1f1f, #0a0a0a);
-  border-top: 1px solid #333;
+  background: linear-gradient(100deg, /*#1f1f1f*/ transparent, #0a0a0a);
+  /* border-top: 1px solid #333; */
   display: flex;
   justify-content: space-between;
   align-items: center;

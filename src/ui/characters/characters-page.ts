@@ -20,10 +20,21 @@ export async function charactersPage(req: Request) {
     
     <h2 class="page-title">Characters</h2>
 
-    <ul>
+    <ul class="characters-list">
       ${characters.map(char => html`
         <li>Name: ${char.name}</li>
       `)}
+      <li>
+        <div class="character-card">
+          <figure></figure>
+          <div>
+            <h4>
+              <span>Warrior</span>
+              <span>Lv. 3</span>
+            </h4>
+          </div>
+        </div>
+      </li>
       <li>
         <a class="add-characters" href="/characters?add=true">
           ${plusIcon()}
