@@ -17,8 +17,11 @@ export async function charactersPage(req: Request) {
 
   return html`
     ${mainMenu(tokenData.userName)}
+
+    <header class="character-header">
+      <h2 class="page-title">Characters</h2>
+    </header>
     
-    <h2 class="page-title">Characters</h2>
 
     <ul class="characters-list">
       ${characters.map(char => html`

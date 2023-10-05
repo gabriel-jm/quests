@@ -1,3 +1,19 @@
+.character-header {
+  height: 220px;
+  background: url(https://lzlbwfwnvukgyfaekuzt.supabase.co/storage/v1/object/sign/quests/wallpapersden.com_pathfinder-kingmaker_1920x1080.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJxdWVzdHMvd2FsbHBhcGVyc2Rlbi5jb21fcGF0aGZpbmRlci1raW5nbWFrZXJfMTkyMHgxMDgwLmpwZyIsImlhdCI6MTY5NjUwODM4NSwiZXhwIjoxNzI4MDQ0Mzg1fQ.c7JCZanxjonx7ibr4HBfTxhGsBPDuImjNzblNjSYzMw&t=2023-10-05T12%3A19%3A45.943Z);
+  background-position: 50% 35%;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  text-shadow: 0 0 8px #222;
+
+  .page-title {
+    width: 100%;
+    background: linear-gradient(180deg, transparent, #252525);
+  }
+}
+
 .page-title {
   text-align: center;
   font-size: 2.5rem;
