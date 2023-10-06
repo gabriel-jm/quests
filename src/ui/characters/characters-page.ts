@@ -28,14 +28,21 @@ export async function charactersPage(req: Request) {
       `)}
       <li>
         <div class="character-card">
-          <div class="char-sprite-bg">
+          <div class="character-image">
             <div class="char-sprite"></div>
           </div>
-          <div>
-            <h4>
-              <span>Warrior</span>
-              <span>Lv. 3</span>
-            </h4>
+          <div class="character-info">
+            <div class="char-name-display">
+              <span class="char-name">Warrior</span>
+              <span class="char-level">Lv. 3</span>
+            </div>
+
+            <ul class="char-attrs">
+              <li>VIT 2</li>
+              <li>STR 1</li>
+              <li>DEX 1</li>
+              <li>INT 1</li>
+            </ul>
           </div>
         </div>
       </li>

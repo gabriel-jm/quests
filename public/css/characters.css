@@ -10,13 +10,10 @@
 
   .page-title {
     width: 100%;
+    text-align: center;
+    font-size: 2.5rem;
     background: linear-gradient(180deg, transparent, #252525);
   }
-}
-
-.page-title {
-  text-align: center;
-  font-size: 2.5rem;
 }
 
 .characters-list {
@@ -24,21 +21,26 @@
   justify-content: center;
   align-items: center;
   padding: 20px;
+  padding-top: 40px;
   gap: 24px;
 }
 
 .character-card {
-  border: 1px solid #777;
+  width: 280px;
+  height: 115px;
+  border: 1px solid #333;
+  background-color: #121212;
   border-radius: 4px;
-  padding: 10px;
+  padding: 10px 12px;
   display: flex;
   gap: 12px;
+}
 
-  & .char-sprite-bg {
-    background-color: #ddd;
-  }
+.character-image {
+  background-color: #555;
+  border-radius: 4px;
 
-  & .char-sprite {
+  .char-sprite {
     width: 80px;
     height: 90px;
     overflow: hidden;
@@ -49,11 +51,45 @@
   }
 }
 
+.character-info {
+  width: 100%;
+
+  .char-name-display {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  
+  .char-name {
+    font-size: 1.25rem;
+  }
+
+  .char-level {
+    color: #49aef7;
+  }
+
+  .char-attrs {
+    font-size: 0.95rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+}
+
 .add-characters {
-  display: inline-block;
-  width: 200px;
-  border: 1px solid #777;
+  display: flex;
+  width: 280px;
+  height: 115px;
+  border: 1px solid #999;
   border-radius: 4px;
   padding: 10px;
-  text-align: center;
+  justify-content: center;
+  align-items: center;
+  filter: brightness(0.4);
+  transition: filter 180ms;
+
+  &:hover {
+    filter: brightness(1);
+  }
 }
