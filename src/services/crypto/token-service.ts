@@ -1,41 +1,4 @@
 import { Payload, create, verify } from 'djwt'
-import { resolve } from 'std/path/mod.ts'
-
-const key = await getKey()
-
-async function getKey() {
-  const keyPath = resolve('key', 'private.key')
-
-  try {
-    const file = await Deno.readTextFile(keyPath)
-
-    return await crypto.subtle.importKey(
-      'jwk',
-      JSON.parse(file) as JsonWebKey,
-      { name: 'HMAC', hash: 'SHA-512' },
-      true,
-      ['sign', 'verify']
-    )
-  } catch {
-    try {
-      await Deno.mkdir(resolve('key'))
-    } catch {
-      null
-    }
-
-    const key = await crypto.subtle.generateKey(
-      { name: 'HMAC', hash: 'SHA-512' },
-      true,
-      ['sign', 'verify']
-    )
-
-    const exported = await crypto.subtle.exportKey('jwk', key)
-
-    await Deno.writeTextFile(keyPath, JSON.stringify(exported))
-
-    return key
-  }
-}
 
 export type TokenData = {
   id: string
@@ -43,16 +6,51 @@ export type TokenData = {
 }
 
 export class TokenService {
+  static #key: CryptoKey
+
+  static {
+    TokenService.#getKey()
+      .then(key => {
+        TokenService.#key = key
+      })
+  }
+
   static async create(data: Payload) {
-    return await create({ alg: 'HS512' }, data, key)
+    return await create({ alg: 'HS512' }, data, TokenService.#key)
   }
 
   static async verify(token: string) {
     try {
-      return await verify(token, key) as TokenData
+      return await verify(token, TokenService.#key) as TokenData
     } catch {
       throw new InvalidToken()
     }
+  }
+
+  static async #getKey() {
+    const kv = await Deno.openKv()
+    const key = (await kv.get<string>(['private_key'])).value
+
+    if (!key) {
+      const generatedKey = await crypto.subtle.generateKey(
+        { name: 'HMAC', hash: 'SHA-512' },
+        true,
+        ['sign', 'verify']
+      )
+      const exported = await crypto.subtle.exportKey('jwk', generatedKey)
+
+      await kv.set(['private_key'], JSON.stringify(exported))
+
+      return generatedKey
+    }
+
+    return await crypto.subtle.importKey(
+      'jwk',
+      JSON.parse(key) as JsonWebKey,
+      { name: 'HMAC', hash: 'SHA-512' },
+      true,
+      ['sign', 'verify']
+    )
   }
 }
 
