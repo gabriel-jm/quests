@@ -7,6 +7,8 @@ type InputFieldProps = {
   type?: string
   value?: string
   optional?: boolean
+  minLength?: number
+  maxLength?: number
 }
 
 export function inputField({

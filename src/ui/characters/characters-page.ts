@@ -5,6 +5,7 @@ import { CharacterModel } from "@/types/index.ts";
 import { html } from "@/ui/tools/html-fn.ts";
 import { mainMenu } from "@/ui/common/index.ts";
 import { plusIcon } from "@/ui/common/icons/index.ts";
+import { characterModal } from "@/ui/characters/character-modal.ts";
 
 export async function charactersPage(req: Request) {
   const cookies = parseCookies<{ token: string }>(req)
@@ -47,10 +48,15 @@ export async function charactersPage(req: Request) {
         </div>
       </li>
       <li>
-        <a class="add-characters" href="/characters?add=true">
+        <button
+          class="add-characters"
+          onclick="characterModal.showModal()"
+        >
           ${plusIcon()}
-        </a>
+        </button>
       </li>
     </ul>
+
+    ${characterModal()}
   `
 }

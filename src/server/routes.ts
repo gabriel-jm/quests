@@ -5,6 +5,7 @@ import { signupPage } from '../ui/account/signup-page.ts';
 import { servePage } from '../ui/tools/serve-page.ts'
 import { homePage } from "@/ui/home/index.ts";
 import { charactersPage } from "@/ui/characters/index.ts";
+import { createCharacter } from "@/controllers/characters/index.ts";
 
 export function defineRoutes(router: Router) {
   router
@@ -16,4 +17,5 @@ export function defineRoutes(router: Router) {
     .set('post::/logout', logout)
     .set('get::/home', servePage(homePage, 'home.css'))
     .set('get::/characters', servePage(charactersPage, 'characters.css'))
+    .set('post::/characters', createCharacter)
 }
