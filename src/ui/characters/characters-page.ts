@@ -25,28 +25,8 @@ export async function charactersPage(req: Request) {
 
     <ul class="characters-list">
       ${characters.map(char => html`
-        <li>Name: ${char.name}</li>
+        <li>${characterCard(char)}</li>
       `)}
-      <li>
-        <div class="character-card">
-          <div class="character-image">
-            <div class="char-sprite"></div>
-          </div>
-          <div class="character-info">
-            <div class="char-name-display">
-              <span class="char-name">Warrior</span>
-              <span class="char-level">Lv. 3</span>
-            </div>
-
-            <ul class="char-attrs">
-              <li>VIT 2</li>
-              <li>STR 1</li>
-              <li>DEX 1</li>
-              <li>INT 1</li>
-            </ul>
-          </div>
-        </div>
-      </li>
       <li>
         <button
           class="add-characters"
@@ -58,5 +38,28 @@ export async function charactersPage(req: Request) {
     </ul>
 
     ${characterModal()}
+  `
+}
+
+function characterCard(char: CharacterModel) {
+  return html`
+    <div class="character-card">
+      <div class="character-image">
+        <div class="char-sprite"></div>
+      </div>
+      <div class="character-info">
+        <div class="char-name-display">
+          <span class="char-name">${char.name}</span>
+          <span class="char-level">Lv. ${char.level}</span>
+        </div>
+
+        <ul class="char-attrs">
+          <li>VIT ${char.vitality}</li>
+          <li>STR ${char.strength}</li>
+          <li>DEX ${char.dexterity}</li>
+          <li>INT ${char.intelligence}</li>
+        </ul>
+      </div>
+    </div>
   `
 }

@@ -6,6 +6,8 @@ export function characterModal() {
     <dialog id="characterModal">
       <h3>New Character</h3>
 
+      <div id="error-message"></div>
+
       <form hx-post="/characters">
         ${inputField({
           name: 'name',

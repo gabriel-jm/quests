@@ -13,6 +13,8 @@ try {
     try {
       return await serverHandler(req)
     } catch(error) {
+      console.log(error)
+
       return new Response(htmlBase(error.message), {
         status: error.statusCode,
         headers: {

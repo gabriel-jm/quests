@@ -33,10 +33,11 @@ export async function signup(req: Request) {
   const encryptedPassword = await hash(password, salt)
 
   const id = crypto.randomUUID()
+  const gold = 0
 
   await sql`
     insert into accounts
-    values (${id}, ${username}, ${email}, ${encryptedPassword});
+    values (${id}, ${username}, ${email}, ${encryptedPassword}, ${gold});
   `
 
   const token = await TokenService.create({
