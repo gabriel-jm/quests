@@ -26,4 +26,13 @@ export class Content {
       status: 204
     })
   }
+
+  static noContentRedirect(target: string) {
+    return new Response(null, {
+      status: 204,
+      headers: {
+        'hx-redirect': target
+      }
+    })
+  }
 }

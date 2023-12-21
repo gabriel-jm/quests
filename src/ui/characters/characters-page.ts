@@ -38,6 +38,15 @@ export async function charactersPage(req: Request) {
     </ul>
 
     ${characterModal()}
+
+    <dialog id="confirmDeleteDialog">
+      <p>Are you sure?</p>
+      <button
+        hx-delete=""
+        hx-on="htmx:configRequest: event.detail.path = '/characters?id=' + confirmDeleteDialog.targetID"
+      >Yes</button>
+      <button>No</button>
+    </dialog>
   `
 }
 
@@ -59,6 +68,13 @@ function characterCard(char: CharacterModel) {
           <li>DEX ${char.dexterity}</li>
           <li>INT ${char.intelligence}</li>
         </ul>
+
+        <button
+          onclick="
+            confirmDeleteDialog.targetID = '${char.id}';
+            confirmDeleteDialog.showModal()
+          "
+        >Delete</button>
       </div>
     </div>
   `

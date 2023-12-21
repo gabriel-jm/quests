@@ -42,7 +42,5 @@ export async function createCharacter(req: Request) {
     )
   `
 
-  return Content.noContent({
-    headers: { 'hx-redirect': '/characters' }
-  })
+  return Content.noContentRedirect('/characters')
 }

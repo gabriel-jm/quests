@@ -2,8 +2,7 @@ create table if not exists missions (
   id varchar(255) primary key not null,
   name varchar(255) not null,
   "backgroundImage" varchar(255) not null,
-  exp int not null,
-  gold int not null
+  exp int not null
 );
 
 insert into missions values (
