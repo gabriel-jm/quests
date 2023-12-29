@@ -1,19 +1,15 @@
 import { serveFile } from 'std/http/file_server.ts'
 import { resolve } from 'std/path/resolve.ts'
+import { Router } from "@/server/router.ts";
 
-export type RouteFunction = (request: Request) => Promise<Response> | Response
-
-export type Router = Map<string, RouteFunction>
-
-export const router = new Map<string, RouteFunction>()
+export const router = new Router()
 
 export async function serverHandler(req: Request) {
   const { pathname } = new URL(req.url)
+  const response = await router.handleRoute(req)
 
-  const handler = router.get(`${req.method.toLowerCase()}::${pathname}`)
-
-  if (handler) {
-    return await handler(req)
+  if (response) {
+    return response
   }
 
   return await serveFile(req, resolve('public', ...pathname.split('/')))

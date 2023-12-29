@@ -13,7 +13,7 @@ try {
     try {
       return await serverHandler(req)
     } catch(error) {
-      console.log(error)
+      console.error(error)
 
       return new Response(htmlBase(error.message), {
         status: error.statusCode,

@@ -17,7 +17,7 @@ export async function charactersPage(req: Request) {
   `
 
   return html`
-    ${mainMenu(tokenData.userName)}
+    ${mainMenu(tokenData.gold, tokenData.userName)}
 
     <header class="character-header">
       <h2 class="page-title">Characters</h2>
@@ -27,7 +27,7 @@ export async function charactersPage(req: Request) {
       ${characters.map(char => html`
         <li>${characterCard(char)}</li>
       `)}
-      <li>
+      <li data-tooltip="Create New">
         <button
           class="add-characters"
           onclick="characterModal.showModal()"

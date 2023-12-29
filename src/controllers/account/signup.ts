@@ -42,7 +42,8 @@ export async function signup(req: Request) {
 
   const token = await TokenService.create({
     id,
-    userName: username
+    userName: username,
+    gold
   })
 
   return Content.noContent({

@@ -1,15 +1,17 @@
 import { html } from "@/ui/tools/html-fn.ts";
-import { logoutIcon } from "@/ui/common/icons/index.ts";
+import { coinsIcon, homeIcon, logoutIcon } from "@/ui/common/icons/index.ts";
 
-export function mainMenu(userName: string) {
+export function mainMenu(gold: number, userName: string) {
   return html`
     <div class="main-menu">
       <h1>
-        <a class="home-link" href="/home">Quests</a>
+        <a class="home-link" href="/home" data-tooltip="Home">
+          ${homeIcon()}
+        </a>
       </h1>
       
       <div class="account-display">
-        <p>${userName}</p>
+        <p data-tooltip="Gold">${coinsIcon()} ${gold}</p>
 
         <div
           class="logout-icon"

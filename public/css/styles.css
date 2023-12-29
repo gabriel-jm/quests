@@ -111,8 +111,7 @@ button {
   left: 0;
   width: 100%;
   padding: 6px 24px;
-  background: linear-gradient(100deg, /*#1f1f1f*/ transparent, #0a0a0a);
-  /* border-top: 1px solid #333; */
+  background: linear-gradient(100deg, transparent, #060606);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -170,5 +169,36 @@ button {
     width: inherit;
     height: inherit;
     rotate: 90deg;
+  }
+}
+
+/* Tooltip */
+[data-tooltip] {
+  position: relative;
+  display: inline-block;
+
+  &::before {
+    content: attr(data-tooltip);
+    background: #0d0d0d;
+    visibility: hidden;
+    opacity: 0;
+    max-width: 100px;
+    font-size: 1rem;
+    font-weight: normal;
+    position: absolute;
+    z-index: 1;
+    text-align: center;
+    bottom: 100%;
+    left: 50%;
+    translate: -50%;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: all 150ms ease-in-out 100ms;
+    box-shadow: 0 1px 2px #070707;
+  }
+
+  &:hover::before {
+    visibility: visible;
+    opacity: 1;
   }
 }

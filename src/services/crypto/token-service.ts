@@ -3,6 +3,7 @@ import { Payload, create, verify } from 'djwt'
 export type TokenData = {
   id: string
   userName: string
+  gold: number
 }
 
 export class TokenService {
@@ -21,6 +22,7 @@ export class TokenService {
 
   static async verify(token: string) {
     try {
+      ('verificou')
       return await verify(token, TokenService.#key) as TokenData
     } catch {
       throw new InvalidToken()

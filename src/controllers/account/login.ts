@@ -35,7 +35,8 @@ export async function login(req: Request) {
 
   const token = await TokenService.create({
     id: account.id,
-    userName: account.username
+    userName: account.username,
+    gold: account.gold
   })
 
   return Content.noContent({

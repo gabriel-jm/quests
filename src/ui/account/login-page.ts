@@ -1,4 +1,4 @@
-import { Content, parseCookies } from "@/controllers/tools/index.ts";
+import { parseCookies } from "@/controllers/tools/index.ts";
 import { inputField } from '../common/input-field.ts';
 import { html } from '../tools/html-fn.ts'
 
@@ -6,8 +6,10 @@ export function loginPage(req: Request) {
   const cookies = parseCookies<{ token: string }>(req)
 
   if (cookies.token && cookies.token !== 'deleted') {
-    return Content.noContent({
+    return new Response(null, {
+      status: 301,
       headers: {
+        location: '/home',
         'hx-redirect': '/home'
       }
     })

@@ -1,3 +1,11 @@
+.home-title {
+  text-align: center;
+  padding: 20px 0;
+  font-family: 'Philosopher', sans-serif;
+  font-size: 3rem;
+  font-style: italic;
+}
+
 .home-menu {
   margin: 18px;
 }
