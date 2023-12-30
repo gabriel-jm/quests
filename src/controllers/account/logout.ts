@@ -1,5 +1,4 @@
 export function logout() {
-  ('caiu no logout')
   return new Response(null, {
     status: 301,
     headers: {

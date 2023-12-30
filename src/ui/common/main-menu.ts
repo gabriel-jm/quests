@@ -1,7 +1,8 @@
 import { html } from "@/ui/tools/html-fn.ts";
 import { coinsIcon, homeIcon, logoutIcon } from "@/ui/common/icons/index.ts";
+import { TokenData } from "@/services/crypto/index.ts";
 
-export function mainMenu(gold: number, userName: string) {
+export function mainMenu({ gold }: TokenData) {
   return html`
     <div class="main-menu">
       <h1>

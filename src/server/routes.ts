@@ -6,6 +6,7 @@ import { homePage } from "@/ui/home/index.ts";
 import { charactersPage } from "@/ui/characters/index.ts";
 import { createCharacter, deleteCharacter } from "@/controllers/characters/index.ts";
 import { Router } from "@/server/router.ts";
+import { expeditionsPage } from "@/ui/expeditions/index.ts";
 
 export function defineRoutes(router: Router) {
   router
@@ -19,4 +20,5 @@ export function defineRoutes(router: Router) {
     .get('/characters', servePage(charactersPage, 'characters.css'))
     .post('/characters', createCharacter)
     .delete('/characters', deleteCharacter)
+    .get('/expeditions', servePage(expeditionsPage))
 }
