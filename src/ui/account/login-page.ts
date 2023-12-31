@@ -3,16 +3,14 @@ import { inputField } from '../common/input-field.ts';
 import { html } from '../tools/html-fn.ts'
 
 export function loginPage(req: Request) {
-  const cookies = parseCookies<{ token: string }>(req)
+  const parsedCookies = parseCookies<{ token: string }>(req)
 
-  if (cookies.token && cookies.token !== 'deleted') {
-    return new Response(null, {
-      status: 301,
-      headers: {
-        location: '/home',
-        'hx-redirect': '/home'
-      }
-    })
+  if (parsedCookies.token && parsedCookies.token !== 'deleted') {
+    return html`
+      <head>
+        <meta http-equiv="refresh" content="0;URL='/home'" />
+      </head>
+    `
   }
 
   return html`

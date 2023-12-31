@@ -22,7 +22,6 @@ export class TokenService {
 
   static async verify(token: string) {
     try {
-      ('verificou')
       return await verify(token, TokenService.#key) as TokenData
     } catch {
       throw new InvalidToken()
@@ -57,7 +56,7 @@ export class TokenService {
 }
 
 export class InvalidToken extends Error {
-  statusCode = 301
+  statusCode = 308
   headers = {
     location: '/logout',
     'hx-redirect': '/logout'

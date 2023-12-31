@@ -16,10 +16,12 @@ export function mainMenu({ gold }: TokenData) {
 
         <div
           class="logout-icon"
-          title="Log Out"
-          hx-post="/logout"
+          data-tooltip="Log Out"
+          onclick="window.cookie = ''"
         >
-          ${logoutIcon()}
+          <a href="/logout">
+            ${logoutIcon()}
+          </a>
         </div>
       </div>
     </div>
