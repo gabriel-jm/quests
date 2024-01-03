@@ -20,5 +20,5 @@ export function defineRoutes(router: Router) {
     .get('/characters', servePage(charactersPage, 'characters.css'))
     .post('/characters', createCharacter)
     .delete('/characters', deleteCharacter)
-    .get('/expeditions', servePage(expeditionsPage))
+    .get('/expeditions', servePage(expeditionsPage, 'expeditions.css'))
 }
