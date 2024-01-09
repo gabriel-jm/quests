@@ -28,14 +28,19 @@ function locationCard() {
         <img src="${imageLink}" alt="Location Image" />
       </div>
       <div class="location-description">
-        <h3>Miridian Forest</h3>
+        <details>
+          <summary>
+            <h3>Miridian Forest</h3>
+            <small>Dungeon</small>
+          </summary>
 
-        <small>3 Spans to Complete</small>
-<!-- 
-        <ul>
-          <li>Bloodstarving Wolves</li>
-          <li>Bat Hordes</li>
-        </ul> -->
+          <ul style="list-style: circle; padding-left: 10px">
+            <li>Bloodstarving Wolves</li>
+            <li>Bat Hordes</li>
+          </ul>
+
+          <button>Enter</button>
+        </details>
       </div>
     </div>
   `

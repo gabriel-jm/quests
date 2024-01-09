@@ -13,6 +13,7 @@
 .location-card {
   /* width: 500px; */
   display: flex;
+  height: fit-content;
   flex-direction: column;
   background-color: #151515;
   border-radius: 4px;
