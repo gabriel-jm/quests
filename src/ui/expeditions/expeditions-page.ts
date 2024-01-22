@@ -1,6 +1,7 @@
 import { html } from "@/ui/tools/html-fn.ts";
 import { getToken } from "@/controllers/account/get-token.ts";
 import { mainMenu } from "@/ui/common/index.ts";
+import { chevronDownIcon } from "@/ui/common/icons/index.ts";
 
 export async function expeditionsPage(req: Request) {
   const tokenData = await getToken(req)
@@ -30,14 +31,22 @@ function locationCard() {
       <div class="location-description">
         <details>
           <summary>
-            <h3>Miridian Forest</h3>
-            <small>Dungeon</small>
+            <div>
+              <h3>Miridian Forest</h3>
+              <span class="location-type">Dungeon</span>
+            </div>
+            <div class="open-icon">
+              ${chevronDownIcon()}
+            </div>
           </summary>
 
-          <ul style="list-style: circle; padding-left: 10px">
-            <li>Bloodstarving Wolves</li>
-            <li>Bat Hordes</li>
-          </ul>
+          <div class="location-rewards">
+            <h4>Rewards</h4>
+
+            <ul>
+              <li>- Common Wood</li>
+            </ul>
+          </div>
 
           <button>Enter</button>
         </details>

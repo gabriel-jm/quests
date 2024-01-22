@@ -11,7 +11,6 @@
 }
 
 .location-card {
-  /* width: 500px; */
   display: flex;
   height: fit-content;
   flex-direction: column;
@@ -36,10 +35,36 @@
   .location-description {
     padding: 16px;
     
-    > h3 {
+    h3 {
       font-family: 'Philosopher', sans-serif;
       font-size: 1.8rem;
       font-style: italic;
+    }
+
+    .location-type {
+      font-size: 0.9rem;
+      color: #999;
+    }
+
+    .location-rewards {
+      padding: 10px 16px;
+      margin: 12px 0;
+      background-color: #0f0f0f;
+      border-radius: 6px;
+
+      h4 {
+        font-size: 1.2rem;
+      }
+    }
+
+    details summary {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    details[open] summary .open-icon svg {
+      rotate: 180deg;
     }
   }
 }
