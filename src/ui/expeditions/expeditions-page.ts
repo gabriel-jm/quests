@@ -1,7 +1,7 @@
 import { html } from "@/ui/tools/html-fn.ts";
 import { getToken } from "@/controllers/account/get-token.ts";
 import { mainMenu } from "@/ui/common/index.ts";
-import { chevronDownIcon } from "@/ui/common/icons/index.ts";
+import { xIcon, chevronDownIcon } from "@/ui/common/icons/index.ts";
 
 export async function expeditionsPage(req: Request) {
   const tokenData = await getToken(req)
@@ -17,6 +17,8 @@ export async function expeditionsPage(req: Request) {
         locationCard()
       ]}
     </section>
+
+    ${combatModal()}
   `
 }
 
@@ -48,9 +50,30 @@ function locationCard() {
             </ul>
           </div>
 
-          <button>Enter</button>
+          <button onclick="combatModal.showModal()">
+            Enter
+          </button>
         </details>
       </div>
     </div>
+  `
+}
+
+function combatModal() {
+  return html`
+    <dialog id="combatModal">
+      <div class="combat-modal">
+        <div class="combat-bg">
+          <div class="close-btn" onclick="combatModal.close()">
+            ${xIcon()}
+          </div>
+        </div>
+        <div class="combat-painel">
+          <p>text</p>
+          <p>text</p>
+          <p>text</p>
+        </div>
+      </div>
+    </dialog>
   `
 }

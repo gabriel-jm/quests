@@ -68,3 +68,51 @@
     }
   }
 }
+
+#combatModal {
+  margin: auto;
+  border: 0;
+  border-radius: 6px;
+  background-color: transparent;
+
+  &::backdrop {
+    background-color: #01010199;
+  }
+}
+
+.combat-modal {
+  background-image: url(https://opengameart.org/sites/default/files/battleback1.png);
+  background-size: cover;
+  background-position: center;
+  margin: auto;
+  width: 95vw;
+  height: 94vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.combat-bg {
+  flex: 1;
+
+  .close-btn {
+    color: white;
+    width: 40px;
+    height: 40px;
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #151515;
+    border-radius: 50px;
+    cursor: pointer;
+  }
+}
+
+.combat-painel {
+  height: 180px;
+  color: white;
+  background-color: #151515dd;
+  padding: 8px;
+}
